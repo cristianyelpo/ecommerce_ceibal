@@ -189,45 +189,23 @@ a.custom-card:hover {
   color: orange;
 }
 
-
-    
- 
-  
-
-
-  
-
-
-
 .form_main {
-  margin: auto;
+  margin-left: 540px;
+  margin-top: 250px;
   width: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 30px 30px 30px 30px;
-  box-shadow: 0px 0px 40px #f09100;
+  box-shadow: 0px 0px 40px #ffffff;
   position: relative;
   overflow: hidden;
+  border: solid 1px #f09100; 
   border-radius: 20px;
 }
 
-.form_main::before {
-  position: absolute;
-  content: "";
-  width: 300px;
-  height: 300px;
-  background-color: #f09100;
-  transform: rotate(45deg);
-  left: -180px;
-  bottom: 30px;
-  z-index: 1;
-  border-radius: 30px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.082);
-  
-}
 
 .heading {
   font-size: 2em;
@@ -246,6 +224,7 @@ a.custom-card:hover {
   align-items: center;
   justify-content: center;
   z-index: 2;
+  color: #f09100;
 }
 
 .inputIcon {
@@ -260,7 +239,7 @@ a.custom-card:hover {
   border: none;
   border-bottom: 2px solid rgba(0, 0, 0, 0.082);
   margin: 10px 0;
-  color: rgb(255, 255, 255);
+  color: #f09100;
   font-size: .8em;
   font-weight: 500;
   box-sizing: border-box;
@@ -269,11 +248,11 @@ a.custom-card:hover {
 
 .inputField:focus {
   outline: none;
-  border-bottom: 2px solid rgb(255, 255, 255);
+  border-bottom: 2px solid #f09100;
 }
 
 .inputField::placeholder {
-  color: rgb(255, 255, 255);
+  color: #f09100;
   font-size: 1em;
   font-weight: 500;
 }
@@ -312,6 +291,11 @@ a.custom-card:hover {
   border-radius: 20px;
 }
 
-#logo1234{
-  width: 300px;
+.user-info{
+  color: aliceblue;
+  border: solid 1px white; 
+  padding: 2px;
+  border-radius: 10px;
+
 }
+
