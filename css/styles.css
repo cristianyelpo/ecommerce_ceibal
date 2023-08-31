@@ -291,6 +291,8 @@ a.custom-card:hover {
   border-radius: 20px;
 }
 
+
+
 .user-info{
   color: aliceblue;
   border: solid 1px white; 
@@ -299,3 +301,18 @@ a.custom-card:hover {
 
 }
 
+#row2{
+  border: solid #dfdfdf 1px;
+  width: 1143px ;
+  height: 80px;
+  
+}
+
+.col-md-4:hover{
+  transform: scale(1.09);
+
+}
+
+#row2:hover{
+  transform: scale(1.09);
+}
