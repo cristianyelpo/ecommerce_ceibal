@@ -32,23 +32,55 @@
           </li>
           <li class="nav-item">
           </li>
-          <li>
-            <!--usuario-->
-            <div class="nav-link">
-              Usuario: <span id="username"></span>
-          </div>
-          <!--usuario-->
+          <li class="nav-item">
+            <a class="nav-link" id="username" href="my-profile.html">Usuario</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
+    <br>
+    
+    
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <hr>
+      <div class="carousel" id="carousel">
       </div>
-    </div>
+      <br>
+      
+      
+      <div id="productInfo"></div>
+      <div class="botonesnuevosss">
+        <button class="prev-btn" id="prevBtn">Anterior</button>
+        <button class="next-btn" id="nextBtn">Siguiente</button>
+      </div>
+      <br>
+      <br>
+      
+      <div id="comment-form">
+        <hr>
+        <h2>Dejar un comentario</h2><br>
+        
+        <label for="comment-text">Tu Opinión:</label><br>
+        <textarea class="cajadecomentarios" id="comment-text" required></textarea><br>
+        <label for="rating">Calificación:</label>
+        <select class="estrellitas" id="rating" required>
+            <option value="1">1 estrella</option>
+            <option value="2">2 estrellas</option>
+            <option value="3">3 estrellas</option>
+            <option value="4">4 estrellas</option>
+            <option value="5">5 estrellas</option>
+        </select><br><br>
+      
+        <button onclick="submitRating()">Enviar Comentario</button>
+    </div><br>
+    
+    <div class="comentariosgente" id="comments">
+        <h2>Comentarios de los usuarios</h2><hr>
+        <ul class="comentariosgente2" id="comments-list"></ul>
+  </div>
+</div>
   </main>
   <footer class="text-muted">
     <div class="container">

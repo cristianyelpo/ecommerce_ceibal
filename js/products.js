@@ -45,7 +45,14 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
   </div>
 `;
+// Agrega un evento de clic al elemento de la lista de productos
+productDiv.addEventListener("click", function () {
+  // Guarda el identificador del producto en el almacenamiento local
+  localStorage.setItem("selectedProduct", product.id);
 
+  // Redirige al usuario a product-info.html
+  window.location.href = "product-info.html";
+});
       container.appendChild(productDiv); // Agregar el nuevo div del producto al contenedor
     }
   }

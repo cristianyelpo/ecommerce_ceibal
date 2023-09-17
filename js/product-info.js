@@ -1,0 +1,230 @@
+
+// Obtener el identificador de localStorage
+var productId = localStorage.getItem('selectedProduct');
+var catID = localStorage.getItem('catID');
+
+// Función fech para obtener los datos
+fetch('https://japceibal.github.io/emercado-api/cats_products/' + catID + '.json')
+  .then(response => response.json())
+  .then(data => {
+    // Buscar el producto por id
+    var product = data.products.find(product => Number(product.id) === Number(productId));
+    if (product) {
+      // Mostrar la información del producto:
+      var productInfoDiv = document.getElementById('productInfo');
+      productInfoDiv.innerHTML = `
+      
+      
+        <div class="productogeneral">
+        <div class="productocompleto"> 
+        
+        </div>
+        <div class="productocompleto2">
+        <img src="img/login.png" alt="logoecomerce" />
+        <h2>${product.name}</h2>
+        <p>${product.description}</p>
+        <p>Precio: ${product.currency} ${product.cost}</p>
+        <p>Vendidos: ${product.soldCount}</p>
+        <button id="botoncompra" >Comprar ahora</button> <br>
+        <button id="botoncarro" >Agregar al carrito</button>
+        </div>
+        </div>
+        <div class="imgchiquitas">
+        <img src="img/prod${product.id}_1.jpg" alt="${product.name}" />
+        <img src="img/prod${product.id}_2.jpg" alt="${product.name}" />
+        <img src="img/prod${product.id}_3.jpg" alt="${product.name}" />
+        <img src="img/prod${product.id}_4.jpg" alt="${product.name}" />
+        </div>
+        
+        <br>
+        <br>
+       
+        
+        
+       
+        
+      `;
+    } else {
+      // Mensaje que muestra si no se encuentra el producto
+      var productInfoDiv = document.getElementById('productInfo');
+      productInfoDiv.innerHTML = `<p>Producto no encontrado</p>`;
+    }
+  });
+
+// Función para obtener y mostrar los comentarios
+function fetchAndDisplayComments() {
+    const apiUrl = 'https://japceibal.github.io/emercado-api/products_comments/' + productId + '.json';
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(comments => {
+            const commentsList = document.getElementById('comments-list');
+
+            // Limpia la lista de comentarios
+            commentsList.innerHTML = ''; 
+
+            
+            // Crea un elemento para mostrar cada comentario
+            comments.forEach(comment => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                <div class="comentariosgente3">
+                <strong>${comment.user} - </strong> ${comment.dateTime} <br>
+                <strong>Comentario:</strong> ${comment.description} <br>    
+                <div class="rating"> <strong>Puntuación:</strong> ${generateStars(comment.score)}
+                </div> 
+                </div>  <hr>  
+                    
+                `;
+                // Agrega el comentario a la lista
+                commentsList.appendChild(listItem); 
+            });
+        })
+        .catch(error => console.error('Error al obtener los comentarios:', error));
+}
+
+// Llamar a la función para obtener y mostrar los comentarios al cargar la página
+fetchAndDisplayComments();
+
+// Función para generar las estrellas
+function generateStars(score) {
+    let starsHtml = '';
+    for (let i = 0; i < score; i++) {
+        starsHtml += '<span class="fa fa-star checked"></span>';
+    }
+    return starsHtml;
+}
+
+let selectedRating = 0;
+
+// Obtiene todas las estrellas y las almacena en un array
+const starElements = Array.from(document.querySelectorAll('.star'));
+
+// Agrega un event listener a cada estrella
+starElements.forEach((star, index) => {
+    star.addEventListener('click', () => {
+        selectedRating = index + 1; // El índice del array comienza en 0, por lo que sumamos 1
+        rate(selectedRating);
+    });
+});
+
+function rate(rating) {
+    selectedRating = rating;
+    starElements.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.add('selected');
+        } else {
+            star.classList.remove('selected');
+        }
+    });
+}
+
+function submitRating() {
+    const rating = document.getElementById('rating').value;
+    const commentText = document.getElementById('comment-text').value;
+
+    if (!rating || !commentText) {
+        alert('Por favor, complete todos los campos.');
+        return;
+    }
+
+    // Crea un nuevo comentario
+    const newComment = {
+        user: sessionStorage.getItem("loggedIn"),
+        score: rating, // Aquí no es necesario agregar comillas
+        dateTime: new Date().toLocaleString(),
+        description: commentText
+    };
+
+    // Agrega el nuevo comentario a la lista en la página
+    const commentsList = document.getElementById('comments-list');
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+    <div class="comentariosgente3">
+        <strong>${newComment.user} - </strong> ${newComment.dateTime} <br>
+        <strong>Comentario:</strong> ${newComment.description} <br>
+        <div class="rating"> <strong>Puntuación:</strong> ${generateStars(newComment.score)}
+        </div> 
+    </div> <hr>
+    `;
+    commentsList.appendChild(listItem);
+
+    // Limpia los campos del formulario
+    document.getElementById('rating').value = '';
+    document.getElementById('comment-text').value = '';
+
+    alert('Comentario enviado con éxito!');
+}
+
+// Elemento <select>
+const selectElement = document.getElementById('rating');
+
+// Evento de cambio en el <select>
+selectElement.addEventListener('change', function () {
+    // Obtiene el valor seleccionado en el <select>
+    const selectedValue = parseInt(selectElement.value);
+
+    // Llama a la función para mostrar las estrellas seleccionadas
+    rate(selectedValue);
+});
+
+// Ejemplo de uso inicial
+rate(selectedRating); // Llama a la función para mostrar las estrellas iniciales
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const carouselContainer = document.getElementById("carousel");
+    const prevButton = document.getElementById("prevBtn");
+    const nextButton = document.getElementById("nextBtn");
+
+    // Obtener la id del producto desde el localStorage
+    const productId = localStorage.getItem('selectedProduct');
+
+    // Comprobar si productId es válido (no nulo)
+    if (productId) {
+        // Obten el producto y su información de alguna manera (puedes modificar esto)
+        const product = {
+            id: productId, // Utiliza la id del producto desde el localStorage
+            name: "Nombre del Producto" // Puedes reemplazar esto con la lógica adecuada para obtener el nombre del producto
+        };
+
+        // Define el número total de imágenes disponibles para el producto
+        const totalImages = 4; // Cambia esto según tu situación
+
+        let currentSlide = 1; // Comenzamos con la primera imagen
+
+        // Función para mostrar la imagen actual
+        function showSlide(index) {
+            currentSlide = index;
+            const slideHTML = `
+                <div class="slide">
+                    <img src="img/prod${product.id}_${currentSlide}.jpg" alt="${product.name}" />
+                </div>
+            `;
+            carouselContainer.innerHTML = slideHTML;
+        }
+
+        // Función para avanzar a la siguiente imagen
+        function nextSlide() {
+            currentSlide = (currentSlide % totalImages) + 1; // Ciclo entre las imágenes
+            showSlide(currentSlide);
+        }
+
+        // Función para retroceder a la imagen anterior
+        function prevSlide() {
+            currentSlide = ((currentSlide - 2 + totalImages) % totalImages) + 1; // Ciclo en dirección inversa
+            showSlide(currentSlide);
+        }
+
+        // Muestra la primera imagen al cargar la página
+        showSlide(currentSlide);
+
+        // Agrega event listeners para los botones de "Anterior" y "Siguiente"
+        prevButton.addEventListener("click", prevSlide);
+        nextButton.addEventListener("click", nextSlide);
+    } else {
+        // Manejar el caso en que no se encuentre la ID del producto en el localStorage
+        console.error('No se encontró la ID del producto en el localStorage');
+    }
+});

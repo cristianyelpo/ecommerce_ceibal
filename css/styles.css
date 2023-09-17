@@ -316,3 +316,156 @@ a.custom-card:hover {
 #row2:hover{
   transform: scale(1.09);
 }
+
+
+
+
+
+
+/* Estilos para el botón de enviar */
+button {
+  padding: 10px 20px; /* Añade espacio alrededor del texto del botón */
+  font-size: 18px; /* Tamaño de fuente del botón */
+  background-color: #ffba34; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none; /* Elimina el borde del botón */
+  border-radius: 5px; /* Agrega bordes redondeados al botón */
+  cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón, indicando que se puede hacer clic */
+}
+
+/* Estilos para el botón de enviar cuando se pasa el cursor sobre él */
+button:hover {
+  background-color: #f3a915; /* Cambia el color de fondo del botón al pasar el cursor sobre él */
+}
+
+
+#comment-form{
+  margin-top: 420px;
+}
+
+.cajadecomentarios{
+  width: 500px;
+  height: 100px;
+  border: #dfdfdf 1px solid;
+  
+}
+
+.estrellitas{
+  padding: 5px; /* Añade espacio alrededor del texto del botón */
+  font-size: 18px; /* Tamaño de fuente del botón */
+  background-color: #ffba34; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none; /* Elimina el borde del botón */
+  border-radius: 5px; /* Agrega bordes redondeados al botón */
+  cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón, indicando que se puede hacer clic */
+}
+
+.estrellitas:hover {
+  background-color: #f3a915; /* Cambia el color de fondo del botón al pasar el cursor sobre él */
+}
+
+.cajadecomentarios:hover{
+  border: #f3a915 solid 1px;
+  
+}
+
+.comentariosgente2 {
+  list-style-type: none;
+}
+
+.comentariosgente3{
+ 
+  padding: 10px;
+}
+
+.comentariosgente3:hover{
+  background-color: #e2e1e1;
+}
+
+.productocompleto{
+  padding: 10px;
+  display: flex;
+  border-radius: 10px;
+  padding: 20px;
+ float: left;
+  
+}
+
+.productocompleto2{
+  border-left: #dfdfdf 1px solid;
+  border-right: #dfdfdf 1px solid;
+  padding: 10px;
+  display: block;
+  width: 400px;
+  padding: 20px;
+  margin-left: 100px;
+  float: right;
+  margin-right: 30px;
+ 
+ 
+  
+}
+
+.productocompleto2 button{
+  margin-top: 5px;
+}
+
+.productocompleto2 img{
+ width: 332px;
+ border:none;
+ border-radius: none;
+ height: 138px;
+ padding: 0px;
+  
+}
+.checked {
+  color: orange;
+}   
+
+#botoncarro{
+  padding: 10px 20px; /* Añade espacio alrededor del texto del botón */
+  font-size: 18px; /* Tamaño de fuente del botón */
+  background-color: #f7e2ba; /* Color de fondo del botón */
+  color: #f3a915; /* Color del texto del botón */
+  border: none; /* Elimina el borde del botón */
+  border-radius: 5px; /* Agrega bordes redondeados al botón */
+  cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón, indicando que se puede hacer clic */
+}
+
+#botoncarro:hover{background-color: #f5d496; /* Cambia el color de fondo del botón al pasar el cursor sobre él */
+}
+
+.productogeneral{
+  float: inline-end;
+
+}
+
+.imgchiquitas img{
+  width: 130px;
+  padding: 5px;
+  float: left;
+  margin-left: 5px;
+  border: #dfdfdf solid 1px;
+  margin-top: 20px;
+}
+
+
+.carousel img{
+  width: 500px;
+  height: 300px;
+  border: #dfdfdf solid 1px;
+  float: left;
+}
+
+.botonesnuevosss{
+  float: left;
+  margin-left: 150px;
+  margin-top: 10px;
+  border-radius: 15px;
+  
+}
+
+.carousel{
+  margin-left: 20px;
+  margin-top: 0px;
+}

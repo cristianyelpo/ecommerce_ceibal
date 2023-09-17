@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const storedUsername = sessionStorage.getItem("loggedIn");
 
     if (storedUsername) {
-        usernameElement.textContent = storedUsername;
+        usernameElement.textContent = "Usuario: " + storedUsername;
     }
 });
 ////////// Codigo del Nombre////////////
