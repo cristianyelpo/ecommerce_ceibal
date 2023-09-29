@@ -1,5 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    
+    const cerrarsesion=document.getElementById("cerrar_sesion");
+    //al clickear en "cerrar sesion" se elimina la informacion del sessionStorage y se redirige al login.
+    cerrarsesion.addEventListener("click", event => {
+        event.preventDefault();
+        sessionStorage.removeItem('loggedIn');
+        window.location.href='login.html';
+        
+    });
+
+
+
     // al cargar la página si no  tenemos en el sessionStorage LoggedIn nos dirige al login
     if (!sessionStorage.getItem('loggedIn')) {
         window.location.href = 'login.html';

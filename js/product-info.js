@@ -3,53 +3,88 @@
 var productId = localStorage.getItem('selectedProduct');
 var catID = localStorage.getItem('catID');
 
-// Función fech para obtener los datos
-fetch('https://japceibal.github.io/emercado-api/cats_products/' + catID + '.json')
-  .then(response => response.json())
-  .then(data => {
-    // Buscar el producto por id
-    var product = data.products.find(product => Number(product.id) === Number(productId));
-    if (product) {
-      // Mostrar la información del producto:
-      var productInfoDiv = document.getElementById('productInfo');
-      productInfoDiv.innerHTML = `
-      
-      
-        <div class="productogeneral">
+// Función para obtener los datos
+function fetchData(catID) {
+    return fetch('https://japceibal.github.io/emercado-api/cats_products/' + catID + '.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Error HTTP: " + response.status);
+        }
+        return response.json();
+      });
+  }
+  
+  // Función para buscar el producto por id
+  function findProduct(data, productId) {
+    return data.products.find(product => Number(product.id) === Number(productId));
+  }
+  
+  // Función para mostrar la información del producto
+  function showProductInfo(product) {
+    var productInfoDiv = document.getElementById('productInfo');
+    productInfoDiv.innerHTML = `
+      <div class="productogeneral">
         <div class="productocompleto"> 
-        
         </div>
         <div class="productocompleto2">
-        <img src="img/login.png" alt="logoecomerce" />
-        <h2>${product.name}</h2>
-        <p>${product.description}</p>
-        <p>Precio: ${product.currency} ${product.cost}</p>
-        <p>Vendidos: ${product.soldCount}</p>
-        <button id="botoncompra" >Comprar ahora</button> <br>
-        <button id="botoncarro" >Agregar al carrito</button>
+          <img id="logodeecomerceenproductos" src="img/login.png" alt="logoecomerce" />
+          <h2>${product.name}</h2>
+          <p>${product.description}</p>
+          <p>Precio: ${product.currency} ${product.cost}</p>
+          <p>Vendidos: ${product.soldCount}</p>
+          <button id="botoncompra" >Comprar ahora</button> <br>
+          <button id="botoncarro" >Agregar al carrito</button>
         </div>
-        </div>
-        <div class="imgchiquitas">
+      </div>
+      <div class="imgchiquitas">
         <img src="img/prod${product.id}_1.jpg" alt="${product.name}" />
         <img src="img/prod${product.id}_2.jpg" alt="${product.name}" />
         <img src="img/prod${product.id}_3.jpg" alt="${product.name}" />
         <img src="img/prod${product.id}_4.jpg" alt="${product.name}" />
-        </div>
-        
-        <br>
-        <br>
-       
-        
-        
-       
-        
+      </div>
+    `;
+  }
+  
+  // Función para obtener los productos relacionados por categoría
+  function getRelatedProducts(data, product) {
+    return data.products.filter(p => p.category === product.category && p.id !== product.id);
+  }
+  
+  // Función para manejar el clic en un producto relacionado
+  function relatedProductClick(relatedProduct) {
+    localStorage.setItem('selectedProduct', relatedProduct.id);
+    window.location.href = 'product-info.html';
+  }
+  
+  // Función para mostrar los productos relacionados
+  function showRelatedProducts(relatedProducts) {
+    var relatedProductsContainer = document.querySelector('.related-product-list');
+    relatedProducts.forEach(relatedProduct => {
+      var relatedProductElement = document.createElement('div');
+      relatedProductElement.classList.add('related-product');
+      relatedProductElement.innerHTML = `
+        <img src="img/prod${relatedProduct.id}_1.jpg" alt="${relatedProduct.name}" />
+        <h3>${relatedProduct.name}</h3>
       `;
-    } else {
-      // Mensaje que muestra si no se encuentra el producto
-      var productInfoDiv = document.getElementById('productInfo');
-      productInfoDiv.innerHTML = `<p>Producto no encontrado</p>`;
-    }
-  });
+
+    // Evento de clic para manejar la selección del producto relacionado
+      relatedProductElement.addEventListener('click', () => relatedProductClick(relatedProduct));
+      relatedProductsContainer.appendChild(relatedProductElement);
+    });
+  }
+  
+  // Uso de las funciones
+  fetchData(catID)
+    .then(data => {
+      var product = findProduct(data, productId);
+      if (product) {
+        showProductInfo(product);
+        var relatedProducts = getRelatedProducts(data, product);
+        showRelatedProducts(relatedProducts);
+      }
+    })
+    .catch(error => console.error("Error: ", error));
+  
 
 // Función para obtener y mostrar los comentarios
 function fetchAndDisplayComments() {
@@ -181,18 +216,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Obtener la id del producto desde el localStorage
     const productId = localStorage.getItem('selectedProduct');
 
-    // Comprobar si productId es válido (no nulo)
+    // Comprueba si productId es válido (no nulo)
     if (productId) {
-        // Obten el producto y su información de alguna manera (puedes modificar esto)
+        // Obtiene el producto y su información
         const product = {
-            id: productId, // Utiliza la id del producto desde el localStorage
-            name: "Nombre del Producto" // Puedes reemplazar esto con la lógica adecuada para obtener el nombre del producto
+            id: productId, // Utiliza la id del producto desde localStorage
+            name: "Nombre del Producto"
         };
 
         // Define el número total de imágenes disponibles para el producto
-        const totalImages = 4; // Cambia esto según tu situación
+        const totalImages = 4; 
 
-        let currentSlide = 1; // Comenzamos con la primera imagen
+        let currentSlide = 1; // Comienza con la primera imagen
 
         // Función para mostrar la imagen actual
         function showSlide(index) {
@@ -220,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Muestra la primera imagen al cargar la página
         showSlide(currentSlide);
 
-        // Agrega event listeners para los botones de "Anterior" y "Siguiente"
+        // Agrega los eventos para los botones de "Anterior" y "Siguiente"
         prevButton.addEventListener("click", prevSlide);
         nextButton.addEventListener("click", nextSlide);
     } else {

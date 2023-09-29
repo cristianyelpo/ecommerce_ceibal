@@ -39,3 +39,35 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+// Comprueba el estado almacenado en localStorage: modo-día o modo-noche
+const checkbox = document.getElementById('switch-label');
+const body = document.body;
+const modoNocheGuardado = localStorage.getItem('modo-noche');
+
+if (modoNocheGuardado === 'true') {
+    checkbox.checked = true;
+    body.classList.add('modo-noche'); // Aplicar modo noche 
+}
+
+// Función para alternar entre modo día y modo noche
+function alternarModo() {
+    if (checkbox.checked) {
+        // Cambiar a modo noche
+        body.classList.add('modo-noche');
+        // Guardar el estado en el almacenamiento local
+        localStorage.setItem('modo-noche', 'true');
+    } else {
+        // Cambiar a modo día
+        body.classList.remove('modo-noche');
+        // Guardar el estado en el almacenamiento local
+        localStorage.setItem('modo-noche', 'false');
+    }
+}
+
+// Agrega un controlador de eventos al checkbox
+checkbox.addEventListener('change', alternarModo);
+
+
+
+

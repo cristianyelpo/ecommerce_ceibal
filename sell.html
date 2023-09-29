@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark  p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,8 +32,23 @@
           <li class="nav-item">
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="username" href="my-profile.html">Usuario</a>
-          </li>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span id="username"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+                <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+                <li><a id="cerrar_sesion" class="dropdown-item" href="">Cerrar Sesion</a></li>
+                <li class="dropdown-item"><div class="switch-button">
+                  <input type="checkbox" name="switch-button" id="switch-label" class=" switch-button__checkbox">
+                  <label for="switch-label" class="switch-button__label"></label>
+                  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                </div>
+              </li>
+            </ul>
         </ul>
       </div>
     </div>
@@ -229,6 +244,7 @@
   <script src="js/init.js"></script>
   <script src="js/sell.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
