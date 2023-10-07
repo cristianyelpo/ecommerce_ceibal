@@ -188,7 +188,7 @@ function submitRating() {
     document.getElementById('rating').value = '';
     document.getElementById('comment-text').value = '';
 
-    alert('Comentario enviado con éxito!');
+    alert('¡Comentario enviado con éxito!');
 }
 
 // Elemento <select>
