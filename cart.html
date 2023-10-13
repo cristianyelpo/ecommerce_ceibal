@@ -18,8 +18,8 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+      <div class="collapse navbar-collapse flex-sm-row" id="navbarNav">
+        <ul class="navbar-nav w-100 navbar-expand-sm justify-content-between">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
@@ -54,11 +54,73 @@
     </div>
   </nav>
   <main>
+    <br>
+    <div class="container mx-auto">
+      <div class="carrito">
+        <div class="text-center">
+          <h2>Artículos en el carrito</h2>
+        </div>
+        <br>
+        <div class="table-responsive">
+          <table class="table table-borderless border bg-light d-md-table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="articles">
+              <!-- Aca se agregan las filas de los productos -->
+            </tbody>
+          </table>
+        </div>
+          </div>
+        </div>
+    <br>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+      <div class="form-group">
+        <h3>Tipo de envío</h3>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="envioNormal" value="normal">
+          <label class="form-check-label" for="envioNormal">Envío Normal de 12 a 15 días</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="envioExpress" value="express">
+          <label class="form-check-label" for="envioExpress">Envío Express de 5 a 8 días (+10%)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="envioPrioritario" value="prioritario">
+          <label class="form-check-label" for="envioPrioritario">Envío Prioritario de 2 a 5 días (+15%)</label>
+        </div>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="form-group row justify-content-lg-center">
+        <div class="col col-md-5 col-sm-12 col-12 mb-4">
+          <label for="departamento">Departamento</label>
+          <input type="text" class="form-control" id="departamento" placeholder="Nombre del departamento">
+      </div>
+        <div class="col col-md-5 col-sm-12 col-12 mb-4">
+            <label for="calle">Calle</label>
+            <input type="text" class="form-control" id="calle" placeholder="Nombre de la calle">
+        </div>
+        <div class="col col-md-5 col-sm-12 col-12 mb-4">
+            <label for="numero">Número</label>
+            <input type="text" class="form-control" id="numero" placeholder="Número de puerta" >
+        </div>
+        <div class="form-group col-md-5 col-sm-12 col-12 mb-4">
+          <label for="esquina">Esquina</label>
+          <input type="text" class="form-control" id="esquina" placeholder="Nombre de la esquina">
       </div>
     </div>
+  </div>
+</div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -70,17 +132,18 @@
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
-      <div></div>
-      <div></div>
+      <div>asda</div>
+      <div>asd</div>
       <div></div>
       <div></div>
     </div>
   </div>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/my-profile.js"></script>
   <script src="js/index.js"></script>
-</body>
 
+</body>
 </html>

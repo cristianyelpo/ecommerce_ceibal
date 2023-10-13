@@ -67,6 +67,13 @@ nav a {
   font-size: 38px;
 }
 
+#falopa {
+  background: url(https://i.ibb.co/tpQPNMZ/background3.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -302,9 +309,9 @@ a.custom-card:hover {
 }
 
 #row2{
-  border: solid #dfdfdf 1px;
-  width: 1143px ;
-  height: 80px;
+  border: none;
+  width: auto ;
+  height: auto;
   
 }
 
@@ -641,3 +648,125 @@ filter: grayscale(110%);
 .switch-button .switch-button__checkbox:checked + .switch-button__label:before {
   transform: translateX(1.5rem);
 }
+.img-carrito {
+  margin-right: 70px;
+  max-width: 150px; 
+  max-height: 150px; 
+}
+
+#calle_env, #numero_env {
+  width: calc(50% - 5px); 
+}
+
+.form-group label {
+  font-weight: bold; 
+}
+
+
+/* ------- responsive del login (Nacho) ------- */
+
+@media screen and (max-width:1000px){
+  .form_main{
+      margin: 0 auto;
+      margin-top: 250px;
+      
+  }
+  body {
+    background-size: cover;
+    background-position: -150px center; /* Ajusta la posición para mostrar el logotipo en pantallas aún más pequeñas */
+      background-size: cover;
+  }
+  .jumbotron {
+    background-position: -150px center;
+    background-size: cover;
+  }
+}
+@media (max-width: 800px) {
+  body {
+    background-size: cover;
+    background-position: -150px center;
+      background-size: cover;
+  }
+  .jumbotron {
+    background-position: -150px center;
+    background-size: cover;
+  }
+}
+
+
+@media screen and (max-width:600px){
+  .form_main{
+      margin: 0 auto;
+      margin-top: 250px;
+  }
+  body {
+    background-position: -150px center; 
+    background-size: cover;
+  }
+  .jumbotron {
+    background-position: -150px center;
+    background-size: cover;
+  }
+}
+
+/* ------- responsive del product info ------- */
+
+@media screen and (min-width: 400px) and (max-width: 1080px) {
+  .botonesnuevosss{
+    margin: -720px auto;
+  }
+  .productocompleto{
+    display: none;
+  }
+
+  .productocompleto2{
+    margin: 90px auto;
+  }
+  .slide {
+    margin: 10px auto;
+  }
+
+  .tituloprodrel{
+    margin: 300px auto -150px;
+  }
+
+  .related-product-list{
+    margin: 200px auto  50px;
+    flex-wrap: wrap;
+  }
+
+  .separador {
+    display: none; /* Oculta el elemento con la clase "separador" */
+  }
+
+  .contenedor2 {
+    display: flex;
+    flex-direction: row; /* Establece la dirección de los elementos en fila (horizontal) */
+    align-items: center; /* Alinea los elementos verticalmente en el centro si es necesario */
+    /* Puedes agregar otras propiedades de flexbox según tus necesidades */
+  }
+
+  .imgchiquitas{
+    margin: -30px auto 50px;
+  }
+
+  #imgpequeñas {
+    margin-top: 300px;
+  }
+
+}
+
+@media screen and (min-width: 559px) and (max-width: 1080px){
+  #imgpequeñas {
+    margin-top: 3000px;
+  }
+}
+
+
+
+
+
+
+
+
+

@@ -35,6 +35,7 @@ function fetchData(catID) {
           <button id="botoncompra" >Comprar ahora</button> <br>
           <button id="botoncarro" >Agregar al carrito</button>
         </div>
+
       </div>
       <div class="imgchiquitas">
         <img src="img/prod${product.id}_1.jpg" alt="${product.name}" />
@@ -43,7 +44,27 @@ function fetchData(catID) {
         <img src="img/prod${product.id}_4.jpg" alt="${product.name}" />
       </div>
     `;
-  }
+    // Event listener para el botón "Comprar ahora"
+var botonCompra = document.getElementById('botoncompra');
+botonCompra.addEventListener('click', function () {
+    // Guardar información del producto en el Local Storage
+    var productosComprados = JSON.parse(localStorage.getItem('productosComprados')) || [];
+    productosComprados.push(product);
+    localStorage.setItem('productosComprados', JSON.stringify(productosComprados));
+    window.location.href = 'cart.html'; // Redirigir al carrito
+});
+
+// Agregar un evento click al botón "Agregar al carrito"
+var botonCarro = document.getElementById('botoncarro');
+botonCarro.addEventListener('click', function () {
+    // Guardar información del producto en el Local Storage
+    var productosAgregados = JSON.parse(localStorage.getItem('productosAgregados')) || [];
+    productosAgregados.push(product);
+    localStorage.setItem('productosAgregados', JSON.stringify(productosAgregados));
+    alert('Producto agregado al carrito.');
+});
+}
+  
   
   // Función para obtener los productos relacionados por categoría
   function getRelatedProducts(data, product) {
@@ -188,7 +209,7 @@ function submitRating() {
     document.getElementById('rating').value = '';
     document.getElementById('comment-text').value = '';
 
-    alert('¡Comentario enviado con éxito!');
+    alert('Comentario enviado con éxito!');
 }
 
 // Elemento <select>
