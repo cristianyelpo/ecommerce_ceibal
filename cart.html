@@ -2,148 +2,251 @@
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>eMercado - Todo lo que busques está aquí</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark  p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse flex-sm-row" id="navbarNav">
-        <ul class="navbar-nav w-100 navbar-expand-sm justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
-          <li class="nav-item">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <span id="username"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
-                <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
-                <li><a id="cerrar_sesion" class="dropdown-item" href="">Cerrar Sesion</a></li>
-                <li class="dropdown-item"><div class="switch-button">
-                  <input type="checkbox" name="switch-button" id="switch-label" class=" switch-button__checkbox">
-                  <label for="switch-label" class="switch-button__label"></label>
-                  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark p-1">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-sm-row" id="navbarNav">
+                <ul class="navbar-nav w-100 navbar-expand-sm justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sell.html">Vender</a>
+                    </li>
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span id="username"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+                                <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+                                <li><a id="cerrar_sesion" class="dropdown-item" href="">Cerrar Sesion</a></li>
+                                <li class="dropdown-item">
+                                    <div class="switch-button">
+                                        <input type="checkbox" name="switch-button" id="switch-label"
+                                            class=" switch-button__checkbox">
+                                        <label for="switch-label" class="switch-button__label"></label>
+                                        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                                        <script
+                                            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+                                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <br>
+        <div class="container mx-auto">
+            <div class="carrito">
+                <div class="text-center">
+                    <h2>Artículos en el carrito</h2>
                 </div>
-              </li>
-            </ul>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <main>
-    <br>
-    <div class="container mx-auto">
-      <div class="carrito">
-        <div class="text-center">
-          <h2>Artículos en el carrito</h2>
+                <br>
+                <div class="table-responsive">
+                    <table class="table table-borderless border bg-light d-md-table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="articles">
+                            <!-- Aca se agregan las filas de los productos -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <br>
-        <div class="table-responsive">
-          <table class="table table-borderless border bg-light d-md-table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody id="articles">
-              <!-- Aca se agregan las filas de los productos -->
-            </tbody>
-          </table>
+        <div class="container">
+          <form id="formenvio">
+          <div class="form-group">
+            <h3>Tipo de envío</h3>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoEnvio" id="envioNormal" value="5">
+                <label class="form-check-label" for="envioNormal">Standard 12 a 15 días (5%)</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoEnvio" id="envioExpress" value="10">
+                <label class="form-check-label" for="envioExpress">Express de 5 a 8 días (7%)</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoEnvio" id="envioPrioritario" value="15">
+                <label class="form-check-label" for="envioPrioritario">Premium 2 a 5 días (15%)</label>
+            </div>
+            <div id="error-tipoEnvio" class="error-message"></div>
         </div>
+
+            <br>
+            <hr>
+            <br>
+
+            <div class="form-group row justify-content-lg-center">
+              <div class="col col-md-5 col-sm-12 col-12 mb-4">
+                  <label for="departamento">Departamento</label>
+                  <input type="text" class="form-control" id="departamento" placeholder="Nombre del departamento">
+                  <p class="error-message" id="error-departamento"></p>
+              </div>
+              <div class="col col-md-5 col-sm-12 col-12 mb-4">
+                  <label for="calle">Calle</label>
+                  <input type="text" class="form-control" id="calle" placeholder="Nombre de la calle">
+                  <p class="error-message" id="error-calle"></p>
+              </div>
+              <div class="col col-md-5 col-sm-12 col-12 mb-4">
+                  <label for="numero">Número</label>
+                  <input type="text" class="form-control" id="numero" placeholder="Número de puerta">
+                  <p class="error-message" id="error-numero"></p>
+              </div>
+              <div class="form-group col-md-5 col-sm-12 col-12 mb-4">
+                  <label for="esquina">Esquina</label>
+                  <input type="text" class="form-control" id="esquina" placeholder="Nombre de la esquina">
+                  <p class="error-message" id="error-esquina"></p>
+              </div>
           </div>
+          <hr>
         </div>
+      
+    </div>
+  <br>
+  
+
+  <div class="container" id="container_costos">
+   
+    <h3>Costos</h3>
     <br>
-    <div class="container">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Subtotal</th>
+          <td id="subtotal">0</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p class="descripcion_costos">Costo unitario del producto por cantidad</p>
+          </td>
+        </tr>
+        <tr>
+          <th>Costo de envío</th>
+          <td id="costo-envio">0</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p class="descripcion_costos">Costo del tipo de envío seleccionado</p>
+          </td>
+        </tr>
+        <tr>
+          <th>Total a pagar</th>
+          <td id="total-pagar">0</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p class="descripcion_costos">Total a pagar, incluyendo costo de envío</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      
+  </div>
 
-      <div class="form-group">
-        <h3>Tipo de envío</h3>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="tipoEnvio" id="envioNormal" value="normal">
-          <label class="form-check-label" for="envioNormal">Envío Normal de 12 a 15 días</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="tipoEnvio" id="envioExpress" value="express">
-          <label class="form-check-label" for="envioExpress">Envío Express de 5 a 8 días (+10%)</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="tipoEnvio" id="envioPrioritario" value="prioritario">
-          <label class="form-check-label" for="envioPrioritario">Envío Prioritario de 2 a 5 días (+15%)</label>
-        </div>
+
+<!-- MODAL -->
+<br>
+<div id="formaDePago" class="col-md-6">
+  <h3>Forma de Pago</h3>
+  <p id="payment-method-description">No ha seleccionado </p>
+    <a id="open-payment-modal-link" href="#">Seleccionar</a>
+    <div id="payment-error" class="error-message"></div>
+</div>
+  
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+    <span class="close" id="closePaymentModalBtn">&times;</span>
+      <h2>Selecciona un Método de Pago</h2>
+      <label>
+        <input type="radio" name="paymentMethod" value="tarjeta" checked> Tarjeta de Crédito
+      </label>
+      <label>
+        <input type="radio" name="paymentMethod" value="transferencia"> Transferencia Bancaria
+      </label>
+
+      <div id="creditCardFields">
+        <label for="creditCardNumber">Número de Tarjeta:</label>
+        <input type="text" id="creditCardNumber">
+        <br>
+        <label for="securityCode">Código de Seguridad:</label>
+        <input type="text" id="securityCode">
+        <br>
+        <label>Vencimiento (MM/AA):</label>
+        <input type="text" id="expirationDate" placeholder="MM/AA">
       </div>
 
+      <div id="bankTransferFields">
+        <label for="accountNumber">Número de Cuenta:</label>
+        <input type="text" id="accountNumber">
+      </div>
+
+      <div id="error-message"></div>
       <br>
-      <hr>
+      <button id="submitPayment">Confirmar Pago</button>
       <br>
-
-      <div class="form-group row justify-content-lg-center">
-        <div class="col col-md-5 col-sm-12 col-12 mb-4">
-          <label for="departamento">Departamento</label>
-          <input type="text" class="form-control" id="departamento" placeholder="Nombre del departamento">
-      </div>
-        <div class="col col-md-5 col-sm-12 col-12 mb-4">
-            <label for="calle">Calle</label>
-            <input type="text" class="form-control" id="calle" placeholder="Nombre de la calle">
-        </div>
-        <div class="col col-md-5 col-sm-12 col-12 mb-4">
-            <label for="numero">Número</label>
-            <input type="text" class="form-control" id="numero" placeholder="Número de puerta" >
-        </div>
-        <div class="form-group col-md-5 col-sm-12 col-12 mb-4">
-          <label for="esquina">Esquina</label>
-          <input type="text" class="form-control" id="esquina" placeholder="Nombre de la esquina">
-      </div>
+      <h6 id="precaucionCompra"> <span id="aster">*</span> si todos los campos de envio estan completos y el metodo de pago esta correcto la compra se finalizará desde aqui </h6>
     </div>
   </div>
-</div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
+  <button type="submit" id="finalizarCompra" class="finalizar-compra-button">Finalizar compra</button>
+<!-- FIN MODAL -->
+</form>
+
+
+</main>
+<footer class="text-muted">
+  <div class="container">
       <p class="float-end">
-        <a href="#">Volver arriba</a>
+          <a href="#">Volver arriba</a>
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
+  </div>
+</footer>
+<div id="spinner-wrapper">
+  <div class="lds-ring">
       <div>asda</div>
       <div>asd</div>
       <div></div>
       <div></div>
-    </div>
   </div>
+</div>
 
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/my-profile.js"></script>
-  <script src="js/index.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/init.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/my-profile.js"></script>
+<script src="js/index.js"></script>
 
 </body>
 </html>

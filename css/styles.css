@@ -762,11 +762,103 @@ filter: grayscale(110%);
   }
 }
 
+#container_costos {
+  border: 1px solid #ccc; 
+  padding: 20px; 
+  border-radius: 10px; 
+  background-color: rgba(169, 169, 169, 0.1);
+
+}
+
+#container_costos h3,
+#container_costos td {
+  font-weight: bold; 
+}
+
+#container_costos table {
+  border: 2px solid #ccc; 
+  border-collapse: collapse; 
+  width: 100%; 
+}
+
+#container_costos th, #container_costos td {
+  border: 1px solid #ccc; 
+  padding: 8px; 
+}
+.descripcion_costos{
+  font-size: 14px; 
+  font-weight: 300; 
+  color: #888; 
+  margin-bottom: 0; 
+}
+
+.boton-vaciar-carrito {
+  margin-left: 10%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  
+  }
 
 
+/* MODAL */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* -------------------------------------------------*/
+
+.finalizar-compra-button {
+  display: block;
+  margin: 0 auto; 
+  width: 80%; 
+  font-size: 20px;
+}
+
+#formaDePago {
+  margin-left: 7%;
+}
+
+.error-message, #error-message-finalizar-compra {
+  color: red; 
+}
+
+#error-message-finalizar-compra {
+  text-align: center;
+  margin: 2%;
+  font-size: 18px;
+}
+
+#bankTransferFields {
+  display: none;
+}
 
 
+/* comentario de precaucion en el modal */
+/*----------------------------------------*/
+#precaucionCompra {
+  color: black;
+  text-align: center;
+  font-size: 12px;
+}
 
-
-
-
+#aster {
+  color: red;
+  text-align: center;
+  font-size: 15px;
+}
+/*----------------------------------------*/
