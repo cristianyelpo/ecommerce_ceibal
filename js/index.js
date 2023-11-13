@@ -2,18 +2,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
     const cerrarsesion=document.getElementById("cerrar_sesion");
-    //al clickear en "cerrar sesion" se elimina la informacion del sessionStorage y se redirige al login.
+    //al clickear en "cerrar sesion" se elimina la informacion del localStorage y se redirige al login.
     cerrarsesion.addEventListener("click", event => {
         event.preventDefault();
-        sessionStorage.removeItem('loggedIn');
+        localStorage.removeItem('loggedIn');
         window.location.href='login.html';
         
     });
 
 
 
-    // al cargar la página si no  tenemos en el sessionStorage LoggedIn nos dirige al login
-    if (!sessionStorage.getItem('loggedIn')) {
+    // al cargar la página si no  tenemos en el localStorage LoggedIn nos dirige al login
+    if (!localStorage.getItem('loggedIn')) {
         window.location.href = 'login.html';
     }
     document.getElementById("autos").addEventListener("click", function () {

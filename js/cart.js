@@ -40,10 +40,10 @@ document.addEventListener('DOMContentLoaded', function () {
       `;
       articlesContainer.appendChild(newRow);
 
-      // Evento para actualizar la cantidad 
+      // Evento para la cantidad
       const cantidadInput = newRow.querySelector('.cantidad');
       cantidadInput.addEventListener('input', () => {
-          actualizarSubtotal({ target: cantidadInput });
+          updateSubtotal({ target: cantidadInput });
           calcularCostoEnvio(); // 
       });
 
@@ -55,137 +55,11 @@ document.addEventListener('DOMContentLoaded', function () {
         actualizarTotal();
     });
 
-      // Llama a actualizarSubtotal para establecer el subtotal inicial
-      actualizarSubtotal({ target: cantidadInput });
+      // Llama a updateSubtotal para establecer el subtotal inicial
+      updateSubtotal({ target: cantidadInput });
   }
 
-
-    // Función para actualizar el total del carrito
-    function actualizarTotal() {
-      const subtotales = document.querySelectorAll('.subtotal');
-      if (subtotales.length === 0) {
-        // Si no hay productos en el carrito, establecer todos los totales a 0
-        document.getElementById('subtotal').textContent = 'USD 0';
-        document.getElementById('costo-envio').textContent = 'USD 0';
-        document.getElementById('total-pagar').textContent = 'USD 0';
-        return;
-      }
-    
-      let total = 0;
-      subtotales.forEach(subtotal => {
-        total += parseInt(subtotal.textContent.replace(/\D/g, ''));
-      });
-    
-      const costoEnvio = parseInt(document.getElementById('costo-envio').textContent.replace(/\D/g, ''));
-    
-      const totalAPagar = total + costoEnvio;
-      const currency = document.querySelector('.precio').dataset.currency;
-    
-      // Actualizamos los elementos HTML
-      document.getElementById('subtotal').textContent = `${currency} ${total}`;
-      document.getElementById('costo-envio').textContent = `${currency} ${costoEnvio}`;
-      document.getElementById('total-pagar').textContent = `${currency} ${totalAPagar}`;
-    }
-
-  // Función para actualizar el subtotal
-  function actualizarSubtotal(event) {
-    const cantidadInput = event.target;
-    const row = cantidadInput.closest('tr');
-    const precioElement = row.querySelector('.precio');
-    const subtotalElement = row.querySelector('.subtotal');
-
-    const cantidad = parseInt(cantidadInput.value);
-    const precio = parseInt(precioElement.dataset.cost);
-    const currency = precioElement.dataset.currency;
-    
-    let nuevoSubtotal;
-
-    if (currency === 'UYU') {
-        precio_convertido= cantidad * (precio / 40); // Convertimos a USD
-        nuevoSubtotal=Math.round(precio_convertido);
-    } else {
-        nuevoSubtotal = cantidad * precio;
-    }
-
-    subtotalElement.textContent = `USD ${nuevoSubtotal}`;
-
-    // Después de actualizar el subtotal, se actualiza el total
-    actualizarTotal();
-}
-
-
-function calcularCostoEnvio() {
-  const subtotales = document.querySelectorAll('.subtotal');
-  let subtotalGeneral = 0;
-  subtotales.forEach(subtotal => {
-      subtotalGeneral += parseInt(subtotal.textContent.replace(/\D/g, ''));
-  });
-
-  const tipoEnvioSeleccionado = document.querySelector('input[name="tipoEnvio"]:checked');
-  const porcentajeEnvioNormal = 5;
-  const porcentajeEnvioExpress = 7;
-  const porcentajeEnvioPrioritario = 15;
-  let costoEnvío = 0;
-
-  if (tipoEnvioSeleccionado) {
-      if (tipoEnvioSeleccionado.id === "envioNormal") {
-          costoEnvío = parseInt(subtotalGeneral * (porcentajeEnvioNormal / 100));
-      } else if (tipoEnvioSeleccionado.id === "envioExpress") {
-          costoEnvío = parseInt(subtotalGeneral * (porcentajeEnvioExpress / 100));
-      } else if (tipoEnvioSeleccionado.id === "envioPrioritario") {
-          costoEnvío = parseInt(subtotalGeneral * (porcentajeEnvioPrioritario / 100));
-      }
-  }
-
-  const costoEnvioElement = document.getElementById('costo-envio');
-  costoEnvioElement.textContent = `USD ${costoEnvío}`;
-
-  actualizarTotal();
-}
-
-
-// Agregar evento de cambio para los tipos de envío
-const tipoEnvioRadios = document.querySelectorAll('input[name="tipoEnvio"]');
-tipoEnvioRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-        const errorTipoEnvio = document.getElementById('error-tipoEnvio');
-        errorTipoEnvio.textContent = ''; // Limpiar el mensaje de error cuando se seleccione un tipo de envío.
-        
-        // Cálculo del costo de envío cada vez que se selecciona un tipo de envío.
-        calcularCostoEnvio();
-      });
-    });
-
-
-
-  // Función para vaciar el carrito con botón "Vaciar Carrito"
-  function vaciarCarrito() {
-    // Vacia el contenido de localStorage
-    localStorage.removeItem('productosAgregados');
-    localStorage.removeItem('productosComprados');
-    
-    // Limpia las filas
-    const articlesContainer = document.getElementById('articles');
-    articlesContainer.innerHTML = '';
-
-    // Actualiza el total a cero
-    actualizarTotal();
-
-    // Actualiza el costo de envío a cero
-    
-    const costoEnvioElement = document.getElementById('costo-envio');
-    costoEnvioElement.textContent = '0';
-    const subtot=document.getElementById("subtotal");
-    subtot.textContent='0';
-
-    const emptyCartMessage = document.createElement('p');
-    emptyCartMessage.id = 'empty-cart-message';
-    emptyCartMessage.textContent = 'Aún no hay productos en el carrito.';
-    articlesContainer.appendChild(emptyCartMessage);
-}
-
-
-  // Función para eliminar un producto del carrito
+  // Función para eliminar un producto del carrito y del almacenamiento local
   function eliminarProductoDelCarrito(productName) {
     // Eliminar el producto del carrito en el DOM
     const rows = articlesContainer.querySelectorAll('tr');
@@ -216,8 +90,101 @@ tipoEnvioRadios.forEach(radio => {
     // Actualizar el total
     actualizarTotal();
   }
+
+  // Función para actualizar el subtotal
+  function updateSubtotal(event) {
+      const cantidadInput = event.target;
+      const row = cantidadInput.closest('tr');
+      const precioElement = row.querySelector('.precio');
+      const subtotalElement = row.querySelector('.subtotal');
+  
+      const cantidad = parseInt(cantidadInput.value);
+      const precio = parseInt(precioElement.dataset.cost);
+      const currency = precioElement.dataset.currency;
+      
+      let nuevoSubtotal;
+  
+      if (currency === 'UYU') {
+          precio_convertido= cantidad * (precio / 40); // Convertimos a USD
+          nuevoSubtotal=Math.round(precio_convertido);
+      } else {
+          nuevoSubtotal = cantidad * precio;
+      }
+  
+      subtotalElement.textContent = `USD ${nuevoSubtotal}`;
+  
+      // Después de actualizar el subtotal, se actualiza el total
+      actualizarTotal();
+  }
+  
+  // Función para actualizar el total del carrito
+  function actualizarTotal() {
+    const subtotales = document.querySelectorAll('.subtotal');
+    if (subtotales.length === 0) {
+      // Si no hay productos en el carrito, establecer todos los totales a 0
+      document.getElementById('subtotal').textContent = 'USD 0';
+      document.getElementById('costo-envio').textContent = 'USD 0';
+      document.getElementById('total-pagar').textContent = 'USD 0';
+      return;
+    }
+  
+    let total = 0;
+    subtotales.forEach(subtotal => {
+      total += parseInt(subtotal.textContent.replace(/\D/g, ''));
+    });
+  
+    const costoEnvio = parseInt(document.getElementById('costo-envio').textContent.replace(/\D/g, ''));
+  
+    const totalAPagar = total + costoEnvio;
+    const currency = document.querySelector('.precio').dataset.currency;
+  
+    // Actualizamos los elementos HTML
+    document.getElementById('subtotal').textContent = `${currency} ${total}`;
+    document.getElementById('costo-envio').textContent = `${currency} ${costoEnvio}`;
+    document.getElementById('total-pagar').textContent = `${currency} ${totalAPagar}`;
+  }
   
 
+ // Agregar evento de cambio para los tipos de envío
+const tipoEnvioRadios = document.querySelectorAll('input[name="tipoEnvio"]');
+tipoEnvioRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        const errorTipoEnvio = document.getElementById('error-tipoEnvio');
+        errorTipoEnvio.textContent = ''; // Limpiar el mensaje de error cuando se seleccione un tipo de envío.
+        
+        // Cálculo del costo de envío cada vez que se selecciona un tipo de envío.
+        calcularCostoEnvio();
+      });
+    });
+
+    function calcularCostoEnvio() {
+      const subtotales = document.querySelectorAll('.subtotal');
+      let subtotalGeneral = 0;
+      subtotales.forEach(subtotal => {
+          subtotalGeneral += parseInt(subtotal.textContent.replace(/\D/g, ''));
+      });
+  
+      const tipoEnvioSeleccionado = document.querySelector('input[name="tipoEnvio"]:checked');
+      const porcentajeEnvioNormal = 5;
+      const porcentajeEnvioExpress = 7;
+      const porcentajeEnvioPrioritario = 15;
+      let costoEnvío = 0;
+  
+      if (tipoEnvioSeleccionado) {
+          if (tipoEnvioSeleccionado.id === "envioNormal") {
+              costoEnvío = parseInt(subtotalGeneral * (porcentajeEnvioNormal / 100));
+          } else if (tipoEnvioSeleccionado.id === "envioExpress") {
+              costoEnvío = parseInt(subtotalGeneral * (porcentajeEnvioExpress / 100));
+          } else if (tipoEnvioSeleccionado.id === "envioPrioritario") {
+              costoEnvío = parseInt(subtotalGeneral * (porcentajeEnvioPrioritario / 100));
+          }
+      }
+  
+      const costoEnvioElement = document.getElementById('costo-envio');
+      costoEnvioElement.textContent = `USD ${costoEnvío}`;
+  
+      actualizarTotal();
+  }
 
   // Función para mostrar los productos en el carrito
   function mostrarProductosEnCarrito() {
@@ -260,6 +227,35 @@ tipoEnvioRadios.forEach(radio => {
           articlesContainer.appendChild(vaciarCarritoButton);
       })
       .catch(error => console.error('Error:', error));
+
+  // Función para vaciar el carrito
+  function vaciarCarrito() {
+      // Vacia el contenido de localStorage
+      localStorage.removeItem('productosAgregados');
+      localStorage.removeItem('productosComprados');
+      
+      // Limpia las filas
+      const articlesContainer = document.getElementById('articles');
+      articlesContainer.innerHTML = '';
+  
+      // Actualiza el total a cero
+      actualizarTotal();
+  
+      // Actualiza el costo de envío a cero
+      
+      const costoEnvioElement = document.getElementById('costo-envio');
+      costoEnvioElement.textContent = '0';
+      const subtot=document.getElementById("subtotal");
+      subtot.textContent='0';
+
+      const emptyCartMessage = document.createElement('p');
+      emptyCartMessage.id = 'empty-cart-message';
+      emptyCartMessage.textContent = 'Aún no hay productos en el carrito.';
+      articlesContainer.appendChild(emptyCartMessage);
+  }
+
+
+
 
 
 // -----------------------------------------------------------------
@@ -503,3 +499,4 @@ confirmarPagoBtn.addEventListener('click', function(event) {
 // -----------------------------------------------------------------
 
 });
+

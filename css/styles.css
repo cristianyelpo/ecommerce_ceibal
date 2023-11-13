@@ -862,3 +862,103 @@ filter: grayscale(110%);
   font-size: 15px;
 }
 /*----------------------------------------*/
+
+
+
+/* estilos para los campos a rellenar del perfil */
+/*----------------------------------------*/
+
+/* Estilos para centrar el contenido */
+.tituloPerfil {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  font-size: 2em;
+  color: #f09100;
+  font-weight: 600;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image-container {
+  margin-bottom: 20px;
+}
+
+#profileImage {
+  margin-top: 20px;
+  font-style: oblique;
+}
+
+#profileImageDisplay{
+  max-width: 100px; 
+  max-height: 100px; 
+  margin-top: 10px; 
+  margin-right: 10px
+}
+
+#datosPerfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Estilos para los campos de entrada */
+.campos {
+  width: 400px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #f09100;
+  margin: 20px 25px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: .9em;
+  font-style: italic;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding-left: 30px;
+  
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .campos {
+      transform: scaleX(0.75);
+      transform-origin: left center;
+    }
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+#saveButton {
+width: 250px;
+margin: 10px;
+
+}
+
+#datosPerfil, .profile-image {
+font-style: italic;
+}
+
+.email, .phone {
+  margin: 0 20px;
+}
